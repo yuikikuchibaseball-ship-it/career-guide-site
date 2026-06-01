@@ -3,7 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07172f" />
     <title>理想の転職へ</title>
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="apple-touch-icon" href="./assets/bg-01.png" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -26,8 +29,7 @@
     <main id="siteApp" class="site is-hidden">
       <header class="hero">
         <nav class="top-nav" aria-label="メインナビゲーション">
-          <a href="#intro">はじめに</a>
-          <a href="#message">メッセージ</a>
+          <a href="#message">動画</a>
           <a href="#jobs">職種一覧</a>
           <a href="#interview">面接対策</a>
           <a href="#profile">自己紹介</a>
@@ -35,33 +37,13 @@
         <div class="hero-inner">
           <p class="eyebrow">Career Guide</p>
           <h1>理想の転職へ</h1>
-          <p>職種理解から面接対策まで、あなたの次の一歩を支える資料サイト。</p>
+          <p>なんとなく応募する前に、仕事の中身と面接の伝え方を整える。あなたの次の一歩を、迷いから確信に変える資料サイトです。</p>
           <div class="hero-actions">
-            <a class="primary-action" href="#jobs">職種一覧を見る</a>
-            <a class="secondary-action" href="#interview">面接対策を見る</a>
+            <a class="primary-action" href="#message">まず動画を見る</a>
+            <a class="secondary-action" href="#jobs">職種を探す</a>
           </div>
         </div>
       </header>
-
-      <section id="intro" class="section intro-section">
-        <div class="section-heading">
-          <p class="eyebrow">Start</p>
-          <h2>はじめに</h2>
-          <p>まずは気になる資料を開いてください。面接が近い方は、面接対策から見るのがおすすめです。</p>
-        </div>
-        <div class="guide-grid">
-          <article>
-            <span>01</span>
-            <h3>職種資料を見る</h3>
-            <p>仕事内容・向き不向き・次のキャリアを確認します。今は営業職から公開しています。</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>面接前に整える</h3>
-            <p>面接対策ワークで、話す内容・自己PR・志望理由を事前に整理します。</p>
-          </article>
-        </div>
-      </section>
 
       <section id="message" class="section message-section">
         <div class="message-panel">
@@ -86,8 +68,27 @@
         <div class="section-heading">
           <p class="eyebrow">Job Library</p>
           <h2>職種一覧</h2>
-          <p>気になる職種をタップすると、そのままPDFで資料を確認できます。</p>
+          <p>全部を見る必要はありません。気になる領域を選ぶか、キーワードで探してください。</p>
         </div>
+        <div class="job-guide">
+          <div>
+            <h3>どれから見る？</h3>
+            <p>迷ったら、まず近いものを1つ選んでください。該当しない場合は検索できます。</p>
+          </div>
+          <div class="job-controls" aria-label="職種絞り込み">
+            <button class="filter-choice is-active" type="button" data-filter="all">全部</button>
+            <button class="filter-choice" type="button" data-filter="営業・接客">営業・接客</button>
+            <button class="filter-choice" type="button" data-filter="IT・Web">IT・Web</button>
+            <button class="filter-choice" type="button" data-filter="事務・管理">事務・管理</button>
+            <button class="filter-choice" type="button" data-filter="専門職">専門職</button>
+            <button class="filter-choice" type="button" data-filter="技術">技術系</button>
+          </div>
+          <label class="job-search">
+            <span>キーワード検索</span>
+            <input id="jobSearch" type="search" placeholder="例：営業、事務、IT、医療" />
+          </label>
+        </div>
+        <p id="jobResultText" class="job-result-text"></p>
         <div id="jobGrid" class="resource-grid"></div>
       </section>
 
@@ -127,23 +128,6 @@
             </div>
           </div>
         </div>
-        <div class="profile-strengths">
-          <article>
-            <span>01</span>
-            <h3>迷いを言語化する</h3>
-            <p>何を大切にしたいのか、どんな働き方が合うのかを一緒に整理します。</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>本番に向けて整える</h3>
-            <p>書類・面接・志望理由を、相手に伝わる言葉へ磨いていきます。</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>最後まで伴走する</h3>
-            <p>不安な場面ほど一人にせず、納得できる選択までサポートします。</p>
-          </article>
-        </div>
         <div class="profile-story">
           <div class="profile-timeline">
             <p class="profile-label">My Story</p>
@@ -160,8 +144,19 @@
           </dl>
         </div>
       </section>
+      <nav class="bottom-nav" aria-label="スマホメニュー">
+        <a href="#message">動画</a>
+        <a href="#jobs">職種</a>
+        <a href="#interview">面接</a>
+        <a href="#profile">最後に</a>
+      </nav>
     </main>
 
     <script src="./app.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("./sw.js");
+      }
+    </script>
   </body>
 </html>

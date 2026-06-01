@@ -1,0 +1,9 @@
+{
+  "name": "理想の転職へ",
+  "short_name": "転職資料",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#07172f",
+  "theme_color": "#07172f",
+  "description": "職種理解から面接対策まで、次の一歩を支える資料サイト。"
+}

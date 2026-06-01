@@ -48,6 +48,12 @@ const passwordInput = document.querySelector("#passwordInput");
 const passwordError = document.querySelector("#passwordError");
 const jobGrid = document.querySelector("#jobGrid");
 const interviewGrid = document.querySelector("#interviewGrid");
+const filterChoices = document.querySelectorAll(".filter-choice");
+const jobSearch = document.querySelector("#jobSearch");
+const jobResultText = document.querySelector("#jobResultText");
+
+let activeFilter = "all";
+let searchTerm = "";
 
 function unlock() {
   lockScreen.classList.add("is-hidden");
@@ -95,6 +101,16 @@ function jobToResource([title, tag, slug, pdf, description, pages, customImage])
   };
 }
 
+function matchesFilter(resource) {
+  const text = `${resource.title} ${resource.tag} ${resource.description}`;
+  const filterMatch =
+    activeFilter === "all" ||
+    resource.tag === activeFilter ||
+    (activeFilter === "技術" && resource.tag.startsWith("技術"));
+  const searchMatch = !searchTerm || text.toLowerCase().includes(searchTerm.toLowerCase());
+  return filterMatch && searchMatch;
+}
+
 function renderCard(resource) {
   const card = document.createElement("a");
   card.className = "resource-card";
@@ -120,14 +136,32 @@ function renderCard(resource) {
 
 function renderResources() {
   jobGrid.innerHTML = "";
-  for (const job of jobs.map(jobToResource)) {
+  const visibleJobs = jobs.map(jobToResource).filter(matchesFilter);
+  for (const job of visibleJobs) {
     jobGrid.appendChild(renderCard(job));
   }
+  jobResultText.textContent =
+    activeFilter === "all" && !searchTerm
+      ? "気になる職種を選んでください。スマホでは一覧をコンパクトに表示しています。"
+      : `${visibleJobs.length}件の職種が見つかりました。`;
 
   interviewGrid.innerHTML = "";
   for (const item of interviews) {
     interviewGrid.appendChild(renderCard(item));
   }
 }
+
+filterChoices.forEach((button) => {
+  button.addEventListener("click", () => {
+    activeFilter = button.dataset.filter;
+    filterChoices.forEach((item) => item.classList.toggle("is-active", item === button));
+    renderResources();
+  });
+});
+
+jobSearch.addEventListener("input", () => {
+  searchTerm = jobSearch.value.trim();
+  renderResources();
+});
 
 renderResources();
