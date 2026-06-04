@@ -69,7 +69,7 @@ function pageHtml({ title, key, intro, total }) {
   const slides = Array.from({ length: total }, (_, index) => {
     const num = String(index + 1).padStart(2, "0");
     return `        <article class="lesson-slide">
-          <img src="./assets/slides/${key}/slide-${num}.png" alt="${escapeHtml(title)}スライド${index + 1}" />
+          <img src="./assets/slides/${key}/slide-${num}.jpg" alt="${escapeHtml(title)}スライド${index + 1}" />
           <div class="lesson-note">
             <span>${index + 1 === total ? "まとめ" : "見るポイント"}</span>
             <p>${escapeHtml(noteFor(title, index + 1, total))}</p>
