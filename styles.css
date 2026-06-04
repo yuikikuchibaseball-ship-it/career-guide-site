@@ -1072,17 +1072,25 @@ input {
 
   .resource-card {
     display: grid;
-    grid-template-columns: 86px 1fr;
-    border-radius: 10px;
+    grid-template-columns: minmax(128px, 38%) 1fr;
+    min-height: 128px;
+    border-radius: 12px;
   }
 
   .resource-thumb {
-    aspect-ratio: auto;
-    min-height: 100%;
+    aspect-ratio: 16 / 9;
+    align-self: stretch;
+    min-height: 128px;
+    background: #edf4fa;
+  }
+
+  .resource-thumb img {
+    object-fit: contain;
   }
 
   .resource-body {
     padding: 12px;
+    min-width: 0;
   }
 
   .resource-tag {
@@ -1104,10 +1112,12 @@ input {
   .resource-meta {
     margin-top: 8px;
     font-size: 12px;
+    align-items: flex-end;
   }
 
   .resource-status {
-    padding: 5px 8px;
+    flex: 0 0 auto;
+    padding: 7px 10px;
     font-size: 12px;
   }
 

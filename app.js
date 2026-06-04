@@ -89,7 +89,10 @@ function unlock() {
 
 function getUnlockedState() {
   try {
-    return window.sessionStorage?.getItem("careerSiteUnlocked") === "true";
+    return (
+      window.localStorage?.getItem("careerSiteUnlocked") === "true" ||
+      window.sessionStorage?.getItem("careerSiteUnlocked") === "true"
+    );
   } catch {
     return false;
   }
@@ -97,6 +100,7 @@ function getUnlockedState() {
 
 function saveUnlockedState() {
   try {
+    window.localStorage?.setItem("careerSiteUnlocked", "true");
     window.sessionStorage?.setItem("careerSiteUnlocked", "true");
   } catch {
     // file:// previews may block storage; the current page can still unlock.
@@ -143,8 +147,6 @@ function renderCard(resource) {
   const card = document.createElement("a");
   card.className = "resource-card";
   card.href = resource.url;
-  card.target = "_blank";
-  card.rel = "noreferrer";
   card.innerHTML = `
     <div class="resource-thumb">
       <img src="${resource.image}" alt="${resource.title}の表紙" />
