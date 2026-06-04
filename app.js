@@ -57,6 +57,33 @@ const jobs = [
   ["公務員公共職員農林水産職", "公共", "public-agri-image2", "公務員公共職員農林水産職_web.pdf", "公務員・公共・農林水産領域の仕事を確認できます。", "11ページ"],
 ];
 
+const jobSearchKeywords = {
+  "営業職": "法人営業 個人営業 ルート営業 新規営業 提案営業 インサイドセールス 外回り 商談 営業マン セールス 売る 交渉 顧客",
+  "接客販売職": "接客 販売 店舗 アパレル 美容師 美容部員 エステ ネイリスト 飲食 ホール カフェ レジ 受付 サービス お客様 コミュニケーション",
+  "カスタマーサポート・コールセンター営業管理": "コールセンター カスタマーサポート カスタマーサービス CS ヘルプデスク テレアポ テレオペ 受電 架電 問い合わせ オペレーター 営業事務 サポート",
+  "事務職": "一般事務 営業事務 経理事務 医療事務 学校事務 受付 データ入力 書類作成 バックオフィス オフィスワーク PC パソコン",
+  "管理人事労務職": "人事 労務 採用 総務 給与 社保 社会保険 勤怠 管理部門 バックオフィス 教育 研修",
+  "金融専門職": "銀行 証券 保険 FP ファイナンシャルプランナー 融資 資産運用 金融 住宅ローン 投資",
+  "ビジネス専門職士業": "士業 税理士 会計士 社労士 行政書士 司法書士 弁護士 法務 会計 監査 コンサル 専門家",
+  "不動産専門職": "不動産 賃貸 売買 仲介 宅建 住宅 マンション 物件 管理 土地 建物 リフォーム",
+  "専門サービス職": "教育 講師 インストラクター スクール 旅行 ホテル ブライダル 冠婚葬祭 介護 福祉 サービス 専門",
+  "コンサルタント職": "コンサル 経営コンサル ITコンサル 戦略 業務改善 課題解決 分析 提案 プロジェクト",
+  "ITエンジニア職": "IT エンジニア プログラマー SE システムエンジニア 開発 インフラ ネットワーク サーバー アプリ Web コーディング 未経験IT",
+  "PM・PdM・EM職": "PM PdM EM プロジェクトマネージャー プロダクトマネージャー エンジニアリングマネージャー 管理 開発管理 ディレクション",
+  "クリエイティブWeb制作職": "Web制作 Webデザイン デザイナー コーダー フロントエンド UI UX ホームページ 制作 ディレクター バナー",
+  "非Web制作クリエイター職": "動画 映像 編集 カメラマン フォトグラファー グラフィック DTP イラスト 広告 制作 クリエイター デザイン",
+  "マーケティング企画広報職": "マーケティング 企画 広報 PR SNS 広告 運用 集客 販促 ブランディング メディア 商品企画",
+  "施工管理職": "施工管理 現場監督 建設 建築 土木 工事 職人 ゼネコン 現場 安全管理 工程管理 品質管理",
+  "建築土木専門職": "建築 土木 設計 CAD 施工 図面 測量 建設 構造 住宅 インフラ 都市",
+  "機械電気電子半導体職": "機械 電気 電子 半導体 メーカー 製造 技術 設計 生産技術 設備保全 回路 自動車",
+  "化学素材職": "化学 素材 材料 研究 開発 品質管理 品質保証 分析 実験 樹脂 繊維",
+  "食品化粧品日用品職": "食品 化粧品 日用品 品質管理 品質保証 商品開発 研究 製造 工場 衛生 検査",
+  "軽作業運送職": "軽作業 物流 倉庫 仕分け ピッキング 梱包 検品 配送 運送 ドライバー 工場 ライン作業 製造 現場",
+  "技能工警備清掃職": "技能工 警備 清掃 設備管理 ビルメンテナンス メンテナンス 整備 工場 作業員 職人 現場",
+  "医療看護薬剤医療営業研究開発職": "医療 看護師 看護 薬剤師 薬局 病院 クリニック 介護 理学療法士 作業療法士 医療事務 MR 医療営業 研究開発",
+  "公務員公共職員農林水産職": "公務員 公共 団体 自治体 市役所 県庁 農業 林業 水産 漁業 地方 地域",
+};
+
 const interviews = [
   {
     title: "面接対策実践ワーク",
@@ -127,19 +154,25 @@ function jobToResource([title, tag, slug, pdf, description, pages, customImage, 
     tag,
     description,
     pages,
+    keywords: jobSearchKeywords[title] ?? "",
     url: customUrl ?? lessonUrls[title] ?? `./documents/jobs/${pdf}`,
     image: customImage ?? `${base}/${slug}/slide-01.png`,
     statusLabel: statusLabel ?? (lessonUrls[title] ? "教材を見る" : "PDFを見る"),
   };
 }
 
+function normalizeSearchText(value) {
+  return value.toLowerCase().replace(/\s+/g, "");
+}
+
 function matchesFilter(resource) {
-  const text = `${resource.title} ${resource.tag} ${resource.description}`;
+  const text = normalizeSearchText(`${resource.title} ${resource.tag} ${resource.description} ${resource.keywords}`);
+  const query = normalizeSearchText(searchTerm);
   const filterMatch =
     activeFilter === "all" ||
     resource.tag === activeFilter ||
     (activeFilter === "技術" && resource.tag.startsWith("技術"));
-  const searchMatch = !searchTerm || text.toLowerCase().includes(searchTerm.toLowerCase());
+  const searchMatch = !query || text.includes(query);
   return filterMatch && searchMatch;
 }
 
