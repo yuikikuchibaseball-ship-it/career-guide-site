@@ -1072,20 +1072,28 @@ input {
 
   .resource-card {
     display: grid;
-    grid-template-columns: minmax(128px, 38%) 1fr;
-    min-height: 128px;
+    grid-template-columns: 112px 1fr;
+    min-height: 116px;
     border-radius: 12px;
   }
 
   .resource-thumb {
-    aspect-ratio: 16 / 9;
+    display: grid;
+    place-items: center;
+    aspect-ratio: auto;
     align-self: stretch;
-    min-height: 128px;
-    background: #edf4fa;
+    min-height: 116px;
+    padding: 9px;
+    background: linear-gradient(135deg, #dfeef5, #f5f9fc);
   }
 
   .resource-thumb img {
+    width: 100%;
+    height: auto;
+    max-height: 92px;
     object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 8px 18px rgba(16, 45, 82, 0.12);
   }
 
   .resource-body {
