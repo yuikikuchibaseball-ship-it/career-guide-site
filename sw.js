@@ -1,5 +1,5 @@
-const CACHE_NAME = "career-guide-v4";
-const CORE_ASSETS = ["./", "./index.html", "./styles.css", "./app.js", "./manifest.json"];
+const CACHE_NAME = "career-guide-v5";
+const CORE_ASSETS = ["./", "./index.html", "./job-sales.html", "./styles.css", "./app.js", "./manifest.json"];
 
 self.addEventListener("install", (event) => {
   self.skipWaiting();

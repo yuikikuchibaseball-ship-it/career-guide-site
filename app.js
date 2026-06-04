@@ -4,7 +4,7 @@ window.__careerSiteLoaded = true;
 const base = "./assets/previews";
 
 const jobs = [
-  ["営業職", "営業・接客", "sales-image2-full", "営業職_web.pdf", "営業職の種類、向き不向き、働き方の違いを確認できます。", "17ページ"],
+  ["営業職", "営業・接客", "sales-image2-full", "営業職_web.pdf", "営業職の種類、向き不向き、働き方の違いを確認できます。", "17ページ", null, "./job-sales.html", "教材を見る"],
   ["接客販売職", "営業・接客", "customer-sales-image2", "接客販売職_web.pdf", "店舗・販売・接客に関わる仕事の違いを確認できます。", "14ページ"],
   ["カスタマーサポート・コールセンター営業管理", "営業・接客", "customer-support-callcenter-salesmanagement-image2", "カスタマーサポートコールセンター営業管理_web.pdf", "問い合わせ対応・サポート・営業管理の仕事を確認できます。", "10ページ"],
   ["事務職", "事務・管理", "admin-office-image2", "事務職_web.pdf", "一般事務、営業事務、専門事務などの違いを確認できます。", "12ページ"],
@@ -90,14 +90,15 @@ passwordForm.addEventListener("submit", (event) => {
   passwordError.textContent = "パスワードが違います。もう一度入力してください。";
 });
 
-function jobToResource([title, tag, slug, pdf, description, pages, customImage]) {
+function jobToResource([title, tag, slug, pdf, description, pages, customImage, customUrl, statusLabel]) {
   return {
     title,
     tag,
     description,
     pages,
-    url: `./documents/jobs/${pdf}`,
+    url: customUrl ?? `./documents/jobs/${pdf}`,
     image: customImage ?? `${base}/${slug}/slide-01.png`,
+    statusLabel: statusLabel ?? "PDFを見る",
   };
 }
 
@@ -127,7 +128,7 @@ function renderCard(resource) {
       <p>${resource.description}</p>
       <div class="resource-meta">
         <span>${resource.pages}</span>
-        <span class="resource-status">PDFを見る</span>
+        <span class="resource-status">${resource.statusLabel}</span>
       </div>
     </div>
   `;
