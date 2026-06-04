@@ -1,4 +1,4 @@
-const CACHE_NAME = "career-guide-v9";
+const CACHE_NAME = "career-guide-v10";
 const CORE_ASSETS = ["./", "./index.html", "./job-sales.html", "./styles.css", "./app.js", "./manifest.json"];
 
 self.addEventListener("install", (event) => {
