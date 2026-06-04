@@ -172,7 +172,7 @@ function renderResources() {
   }
   jobResultText.textContent =
     activeFilter === "all" && !searchTerm
-      ? "気になる職種を選んでください。スマホでは一覧をコンパクトに表示しています。"
+      ? "気になる職種を選んでください。"
       : `${visibleJobs.length}件の職種が見つかりました。`;
 
   interviewGrid.innerHTML = "";
