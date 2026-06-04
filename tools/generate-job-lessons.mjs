@@ -56,24 +56,11 @@ function escapeHtml(value) {
     .replaceAll('"', "&quot;");
 }
 
-function noteFor(title, index, total) {
-  if (index === 1) return `${title}の全体像をつかむページです。まずは「どんな仕事なのか」を大きく理解してください。`;
-  if (index === total) return `${title}に興味が出たら、次は自分の経験とつなげて「なぜこの職種なのか」を整理していきましょう。`;
-  if (index <= 4) return `仕事内容や種類の違いを見ます。自分がイメージしていた仕事と、どこが近くてどこが違うかを確認してください。`;
-  if (index <= 8) return `向き不向きや働き方を見ます。できそう・不安・気になる、の3つに分けながら読むと整理しやすいです。`;
-  if (index <= 12) return `選考で話す材料につながる部分です。過去の経験で近いものがないか思い出しながら見てください。`;
-  return `最後は応募先選びや面接準備につなげます。不安な点はそのまま面談で相談してください。`;
-}
-
 function pageHtml({ title, key, intro, total }) {
   const slides = Array.from({ length: total }, (_, index) => {
     const num = String(index + 1).padStart(2, "0");
     return `        <article class="lesson-slide">
           <img src="./assets/slides/${key}/slide-${num}.jpg" alt="${escapeHtml(title)}スライド${index + 1}" />
-          <div class="lesson-note">
-            <span>${index + 1 === total ? "まとめ" : "見るポイント"}</span>
-            <p>${escapeHtml(noteFor(title, index + 1, total))}</p>
-          </div>
         </article>`;
   }).join("\n");
 
@@ -95,11 +82,6 @@ function pageHtml({ title, key, intro, total }) {
         <h1>${escapeHtml(title)}を理解する</h1>
         <p>${escapeHtml(intro)}</p>
       </header>
-
-      <section class="lesson-intro">
-        <h2>このページの読み方</h2>
-        <p>スライドを上から順番に見るだけでなく、各スライドの下にある「見るポイント」を読んでください。自分に合いそうか、どこが不安かを考えながら進めると、面談や面接で話す内容も整理しやすくなります。</p>
-      </section>
 
       <section class="lesson-flow" aria-label="${escapeHtml(title)}スライド教材">
 ${slides}
