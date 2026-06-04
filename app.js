@@ -3,8 +3,35 @@ window.__careerSiteLoaded = true;
 
 const base = "./assets/previews";
 
+const lessonUrls = {
+  "営業職": "./job-sales.html",
+  "接客販売職": "./job-customer-sales.html",
+  "カスタマーサポート・コールセンター営業管理": "./job-customer-support-callcenter-salesmanagement.html",
+  "事務職": "./job-admin-office.html",
+  "管理人事労務職": "./job-management-hr-labor.html",
+  "金融専門職": "./job-financial-specialist.html",
+  "ビジネス専門職士業": "./job-business-professional-licensed.html",
+  "不動産専門職": "./job-real-estate-specialist.html",
+  "専門サービス職": "./job-specialized-services.html",
+  "コンサルタント職": "./job-consultant.html",
+  "ITエンジニア職": "./job-it-engineer.html",
+  "PM・PdM・EM職": "./job-pm-pdm-em.html",
+  "クリエイティブWeb制作職": "./job-creative-web-production.html",
+  "非Web制作クリエイター職": "./job-non-web-creative-production.html",
+  "マーケティング企画広報職": "./job-marketing-planning-pr.html",
+  "施工管理職": "./job-construction-management.html",
+  "建築土木専門職": "./job-architecture-civil.html",
+  "機械電気電子半導体職": "./job-mechanical-electrical-semiconductor.html",
+  "化学素材職": "./job-chemical-materials.html",
+  "食品化粧品日用品職": "./job-food-cosmetics-dailygoods.html",
+  "軽作業運送職": "./job-lightwork-logistics.html",
+  "技能工警備清掃職": "./job-skilled-security-cleaning.html",
+  "医療看護薬剤医療営業研究開発職": "./job-medical-nursing-pharma-sales-dev.html",
+  "公務員公共職員農林水産職": "./job-public-agri.html",
+};
+
 const jobs = [
-  ["営業職", "営業・接客", "sales-image2-full", "営業職_web.pdf", "営業職の種類、向き不向き、働き方の違いを確認できます。", "17ページ", null, "./job-sales.html", "教材を見る"],
+  ["営業職", "営業・接客", "sales-image2-full", "営業職_web.pdf", "営業職の種類、向き不向き、働き方の違いを確認できます。", "17ページ"],
   ["接客販売職", "営業・接客", "customer-sales-image2", "接客販売職_web.pdf", "店舗・販売・接客に関わる仕事の違いを確認できます。", "14ページ"],
   ["カスタマーサポート・コールセンター営業管理", "営業・接客", "customer-support-callcenter-salesmanagement-image2", "カスタマーサポートコールセンター営業管理_web.pdf", "問い合わせ対応・サポート・営業管理の仕事を確認できます。", "10ページ"],
   ["事務職", "事務・管理", "admin-office-image2", "事務職_web.pdf", "一般事務、営業事務、専門事務などの違いを確認できます。", "12ページ"],
@@ -96,9 +123,9 @@ function jobToResource([title, tag, slug, pdf, description, pages, customImage, 
     tag,
     description,
     pages,
-    url: customUrl ?? `./documents/jobs/${pdf}`,
+    url: customUrl ?? lessonUrls[title] ?? `./documents/jobs/${pdf}`,
     image: customImage ?? `${base}/${slug}/slide-01.png`,
-    statusLabel: statusLabel ?? "PDFを見る",
+    statusLabel: statusLabel ?? (lessonUrls[title] ? "教材を見る" : "PDFを見る"),
   };
 }
 
