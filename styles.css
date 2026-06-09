@@ -1,17 +1,18 @@
 :root {
   --ink: #08111f;
-  --muted: #667085;
-  --line: rgba(15, 35, 66, 0.12);
-  --blue: #2563ff;
-  --cyan: #17c9e8;
-  --orange: #ff6b35;
+  --muted: #9aa7ba;
+  --line: rgba(255, 255, 255, 0.14);
+  --blue: #3264ff;
+  --cyan: #16dbff;
+  --orange: #ff7a2f;
   --gold: #ffd166;
-  --mint: #31e6a7;
-  --pink: #ff4f7b;
-  --deep: #07111f;
-  --bg: #edf4ff;
-  --panel: rgba(255, 255, 255, 0.88);
-  --shadow: 0 18px 48px rgba(7, 17, 31, 0.16);
+  --mint: #28f0b5;
+  --pink: #ff3f8f;
+  --violet: #7c3aed;
+  --deep: #050914;
+  --bg: #07111f;
+  --panel: rgba(10, 19, 37, 0.78);
+  --shadow: 0 22px 58px rgba(0, 0, 0, 0.34);
   --display-font: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
   --body-font: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
 }
@@ -26,12 +27,11 @@ html {
 
 body {
   margin: 0;
-  color: var(--ink);
+  color: #f8fbff;
   font-family: var(--body-font);
   background:
-    linear-gradient(180deg, rgba(7, 17, 31, 0.05), transparent 340px),
-    linear-gradient(135deg, #f7fbff 0%, #ecf5ff 36%, #f6f1ff 68%, #fff7ef 100%),
-    var(--bg);
+    linear-gradient(180deg, rgba(255, 63, 143, 0.24), transparent 340px),
+    linear-gradient(135deg, #050914 0%, #071c3a 42%, #1c1246 72%, #291022 100%);
 }
 
 body:has(.site:not(.is-hidden)) {
@@ -162,13 +162,13 @@ input {
 }
 
 .hero {
-  min-height: 58vh;
+  min-height: 66vh;
   display: flex;
   flex-direction: column;
   color: #fff;
   background:
-    linear-gradient(120deg, rgba(5, 11, 28, 0.98), rgba(20, 42, 91, 0.88) 48%, rgba(37, 99, 255, 0.32)),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.44)),
+    linear-gradient(125deg, rgba(5, 9, 20, 0.96), rgba(6, 27, 62, 0.86) 38%, rgba(255, 63, 143, 0.52) 72%, rgba(255, 122, 47, 0.42)),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.58)),
     url("./assets/bg-01.png") center / cover;
 }
 
@@ -180,7 +180,7 @@ input {
   gap: 10px;
   justify-content: center;
   padding: 14px;
-  background: rgba(5, 11, 28, 0.74);
+  background: rgba(5, 9, 20, 0.78);
   backdrop-filter: blur(12px);
 }
 
@@ -196,8 +196,8 @@ input {
 }
 
 .top-nav a:hover {
-  border-color: rgba(201, 155, 69, 0.62);
-  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(40, 240, 181, 0.68);
+  background: rgba(40, 240, 181, 0.12);
 }
 
 .hero-inner {
@@ -238,13 +238,13 @@ input {
 .primary-action {
   color: #fff;
   background: linear-gradient(135deg, var(--pink), var(--orange));
-  box-shadow: 0 16px 36px rgba(255, 79, 123, 0.28);
+  box-shadow: 0 18px 44px rgba(255, 63, 143, 0.36);
 }
 
 .secondary-action {
   color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.44);
-  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(40, 240, 181, 0.46);
+  background: rgba(40, 240, 181, 0.12);
 }
 
 .section {
@@ -279,7 +279,7 @@ input {
 
 .section-heading p:not(.eyebrow) {
   margin: 14px 0 0;
-  color: var(--muted);
+  color: rgba(248, 251, 255, 0.72);
   font-weight: 650;
   line-height: 1.8;
 }
@@ -293,10 +293,13 @@ input {
 .guide-grid article {
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(12, 101, 201, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.13);
   border-radius: 8px;
-  background: var(--panel);
-  box-shadow: 0 16px 42px rgba(18, 47, 92, 0.1);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.04)),
+    rgba(6, 16, 35, 0.82);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(16px);
 }
 
 .guide-grid article {
@@ -323,7 +326,7 @@ input {
 
 .guide-grid p {
   margin: 0;
-  color: var(--muted);
+  color: rgba(248, 251, 255, 0.68);
   font-weight: 650;
   line-height: 1.7;
 }
@@ -344,8 +347,8 @@ input {
   border-radius: 8px;
   color: #fff;
   background:
-    linear-gradient(135deg, rgba(5, 11, 28, 0.98), rgba(15, 43, 96, 0.95) 52%, rgba(255, 79, 123, 0.72));
-  box-shadow: 0 24px 70px rgba(5, 11, 28, 0.28);
+    linear-gradient(135deg, rgba(6, 13, 30, 0.98), rgba(36, 25, 92, 0.92) 48%, rgba(255, 63, 143, 0.74));
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.36);
 }
 
 .message-copy h2 {
@@ -357,7 +360,7 @@ input {
 
 .message-copy p:not(.eyebrow) {
   margin: 18px 0 0;
-  color: rgba(255, 255, 255, 0.76);
+  color: rgba(255, 255, 255, 0.82);
   font-weight: 650;
   line-height: 1.9;
 }
@@ -388,12 +391,13 @@ input {
   align-items: center;
   margin-bottom: 18px;
   padding: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.64);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 8px;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(238, 246, 255, 0.9)),
-    linear-gradient(90deg, rgba(49, 230, 167, 0.14), rgba(255, 79, 123, 0.12));
-  box-shadow: 0 18px 44px rgba(18, 47, 92, 0.14);
+    linear-gradient(135deg, rgba(50, 100, 255, 0.18), rgba(255, 63, 143, 0.13)),
+    rgba(7, 17, 35, 0.86);
+  box-shadow: 0 22px 58px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(18px);
 }
 
 .job-guide h3 {
@@ -404,7 +408,7 @@ input {
 
 .job-guide p {
   margin: 0;
-  color: var(--muted);
+  color: rgba(248, 251, 255, 0.68);
   font-weight: 650;
   line-height: 1.7;
 }
@@ -418,19 +422,19 @@ input {
 .filter-choice {
   min-height: 40px;
   padding: 0 13px;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 8px;
-  color: var(--ink);
+  color: #f8fbff;
   font-weight: 850;
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.08);
   cursor: pointer;
-  box-shadow: 0 8px 18px rgba(7, 17, 31, 0.06);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
 }
 
 .filter-choice.is-active {
   color: #fff;
-  border-color: var(--blue);
-  background: linear-gradient(135deg, var(--blue), #7c3aed);
+  border-color: rgba(40, 240, 181, 0.5);
+  background: linear-gradient(135deg, var(--blue), var(--violet));
 }
 
 .job-search {
@@ -440,7 +444,7 @@ input {
 }
 
 .job-search span {
-  color: var(--muted);
+  color: rgba(248, 251, 255, 0.7);
   font-size: 13px;
   font-weight: 850;
 }
@@ -448,17 +452,21 @@ input {
 .job-search input {
   min-height: 48px;
   padding: 0 16px;
-  border: 1px solid rgba(37, 99, 255, 0.22);
+  border: 1px solid rgba(40, 240, 181, 0.28);
   border-radius: 8px;
-  color: var(--ink);
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5), 0 12px 26px rgba(37, 99, 255, 0.1);
+  color: #fff;
+  background: rgba(2, 8, 20, 0.72);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06), 0 14px 30px rgba(0, 0, 0, 0.22);
   outline: none;
+}
+
+.job-search input::placeholder {
+  color: rgba(255, 255, 255, 0.46);
 }
 
 .job-result-text {
   margin: 0 0 16px;
-  color: var(--muted);
+  color: rgba(248, 251, 255, 0.68);
   font-weight: 750;
 }
 
@@ -478,8 +486,8 @@ input {
   border-radius: 8px;
   color: #fff;
   background:
-    linear-gradient(135deg, rgba(5, 11, 28, 0.98), rgba(15, 43, 96, 0.95) 52%, rgba(124, 58, 237, 0.78));
-  box-shadow: 0 24px 70px rgba(5, 11, 28, 0.3);
+    linear-gradient(135deg, rgba(5, 9, 20, 0.98), rgba(27, 20, 78, 0.95) 52%, rgba(22, 219, 255, 0.34));
+  box-shadow: 0 28px 82px rgba(0, 0, 0, 0.36);
 }
 
 .profile-hero::before {
@@ -615,7 +623,7 @@ input {
   gap: 12px;
   padding: 12px;
   border-radius: 8px;
-  background: linear-gradient(135deg, #f8fbff, #eef6ff);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .profile-list dt {
@@ -624,7 +632,7 @@ input {
 
 .profile-list dd {
   margin: 0;
-  color: var(--muted);
+  color: rgba(248, 251, 255, 0.68);
   font-weight: 650;
 }
 
@@ -638,10 +646,13 @@ input {
 .profile-timeline,
 .profile-story .profile-list {
   padding: 26px;
-  border: 1px solid rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.13);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 16px 42px rgba(18, 47, 92, 0.12);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05)),
+    rgba(6, 16, 35, 0.82);
+  box-shadow: 0 20px 52px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(16px);
 }
 
 .profile-timeline h3 {
@@ -653,7 +664,7 @@ input {
 
 .profile-timeline p:not(.profile-label) {
   margin: 0 0 12px;
-  color: var(--muted);
+  color: rgba(248, 251, 255, 0.68);
   font-weight: 650;
   line-height: 1.8;
 }
@@ -673,9 +684,9 @@ input {
 .support-list li {
   padding: 12px 14px;
   border-radius: 8px;
-  color: var(--ink);
+  color: #fff;
   font-weight: 850;
-  background: linear-gradient(135deg, #f8fbff, #eef6ff);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .filters {
@@ -688,18 +699,18 @@ input {
 .filter-button {
   min-height: 40px;
   padding: 0 14px;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 255, 255, 0.13);
   border-radius: 8px;
-  color: var(--ink);
+  color: #f8fbff;
   font-weight: 850;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.08);
   cursor: pointer;
 }
 
 .filter-button.is-active {
   color: #fff;
-  border-color: var(--blue);
-  background: var(--blue);
+  border-color: rgba(40, 240, 181, 0.5);
+  background: linear-gradient(135deg, var(--blue), var(--violet));
 }
 
 .resource-grid {
@@ -714,10 +725,12 @@ input {
 
 .resource-card {
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.13);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 18px 46px rgba(25, 55, 105, 0.16);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.045)),
+    rgba(6, 16, 35, 0.84);
+  box-shadow: 0 22px 56px rgba(0, 0, 0, 0.28);
   text-align: left;
   cursor: pointer;
   transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
@@ -728,13 +741,13 @@ input {
 .resource-card:hover {
   transform: translateY(-4px);
   border-color: rgba(49, 230, 167, 0.62);
-  box-shadow: 0 24px 56px rgba(25, 55, 105, 0.24);
+  box-shadow: 0 26px 62px rgba(0, 0, 0, 0.38);
 }
 
 .resource-thumb {
   position: relative;
   aspect-ratio: 16 / 9;
-  background: linear-gradient(135deg, #07111f, #2563ff);
+  background: linear-gradient(135deg, #050914, #163cff);
 }
 
 .resource-thumb img {
@@ -761,10 +774,10 @@ input {
   margin-bottom: 14px;
   padding: 5px 9px;
   border-radius: 8px;
-  color: #12355f;
+  color: #061426;
   font-size: 12px;
   font-weight: 900;
-  background: linear-gradient(135deg, rgba(49, 230, 167, 0.2), rgba(23, 201, 232, 0.16));
+  background: linear-gradient(135deg, var(--mint), var(--cyan));
 }
 
 .resource-card h3 {
@@ -777,7 +790,7 @@ input {
 .resource-card p {
   min-height: 74px;
   margin: 0;
-  color: var(--muted);
+  color: rgba(248, 251, 255, 0.66);
   font-weight: 650;
   line-height: 1.65;
 }
@@ -788,7 +801,7 @@ input {
   justify-content: space-between;
   gap: 14px;
   margin-top: 20px;
-  color: #96a4b9;
+  color: rgba(248, 251, 255, 0.48);
   font-weight: 800;
 }
 
@@ -801,8 +814,8 @@ input {
   color: #fff;
   font-size: 14px;
   font-weight: 900;
-  background: linear-gradient(135deg, var(--blue), #7c3aed);
-  box-shadow: 0 10px 22px rgba(37, 99, 255, 0.22);
+  background: linear-gradient(135deg, var(--pink), var(--orange));
+  box-shadow: 0 10px 24px rgba(255, 63, 143, 0.26);
 }
 
 .video-grid {
@@ -820,7 +833,7 @@ input {
   border-radius: 8px;
   color: #fff;
   font-weight: 900;
-  background: linear-gradient(135deg, #071a3f, #0967d8);
+  background: linear-gradient(135deg, #050914, var(--blue), var(--pink));
 }
 
 .bottom-nav {
@@ -833,10 +846,10 @@ input {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 6px;
   padding: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 8px;
-  background: rgba(5, 11, 28, 0.88);
-  box-shadow: 0 16px 46px rgba(5, 11, 28, 0.36);
+  background: rgba(5, 9, 20, 0.92);
+  box-shadow: 0 18px 52px rgba(0, 0, 0, 0.46);
   backdrop-filter: blur(14px);
 }
 
@@ -852,15 +865,15 @@ input {
 }
 
 .bottom-nav a:first-child {
-  color: #07111f;
-  background: linear-gradient(135deg, #fff, #dffdf3);
-  box-shadow: 0 8px 18px rgba(49, 230, 167, 0.24);
+  color: #050914;
+  background: linear-gradient(135deg, var(--mint), var(--cyan));
+  box-shadow: 0 8px 22px rgba(40, 240, 181, 0.28);
 }
 
 .lesson-page {
   background:
-    linear-gradient(180deg, rgba(7, 17, 31, 0.08), transparent 300px),
-    linear-gradient(135deg, #f7fbff 0%, #eef6ff 48%, #fff4f7 100%);
+    linear-gradient(180deg, rgba(255, 63, 143, 0.2), transparent 300px),
+    linear-gradient(135deg, #050914 0%, #071c3a 48%, #1c1246 100%);
 }
 
 .lesson-page main {
@@ -876,8 +889,8 @@ input {
   border-radius: 8px;
   color: #fff;
   background:
-    linear-gradient(135deg, rgba(5, 11, 28, 0.98), rgba(15, 43, 96, 0.95) 55%, rgba(255, 79, 123, 0.74));
-  box-shadow: 0 24px 70px rgba(5, 21, 48, 0.22);
+    linear-gradient(135deg, rgba(5, 9, 20, 0.98), rgba(27, 20, 78, 0.95) 55%, rgba(255, 63, 143, 0.72));
+  box-shadow: 0 28px 78px rgba(0, 0, 0, 0.34);
 }
 
 .lesson-back {
@@ -913,10 +926,13 @@ input {
 .lesson-next {
   margin: 20px 0;
   padding: 26px;
-  border: 1px solid rgba(12, 101, 201, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.13);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.94);
-  box-shadow: 0 14px 38px rgba(18, 47, 92, 0.1);
+  color: #fff;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05)),
+    rgba(6, 16, 35, 0.82);
+  box-shadow: 0 20px 52px rgba(0, 0, 0, 0.28);
 }
 
 .lesson-intro h2,
@@ -929,7 +945,7 @@ input {
 .lesson-intro p,
 .lesson-next p {
   margin: 0;
-  color: var(--muted);
+  color: rgba(248, 251, 255, 0.68);
   font-weight: 650;
   line-height: 1.85;
 }
@@ -941,10 +957,10 @@ input {
 
 .lesson-slide {
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.13);
   border-radius: 8px;
-  background: #fff;
-  box-shadow: 0 18px 46px rgba(25, 55, 105, 0.14);
+  background: rgba(6, 16, 35, 0.84);
+  box-shadow: 0 22px 56px rgba(0, 0, 0, 0.28);
 }
 
 .lesson-slide img {
@@ -967,7 +983,7 @@ input {
 
 .lesson-note p {
   margin: 0;
-  color: var(--ink);
+  color: rgba(248, 251, 255, 0.86);
   font-weight: 750;
   line-height: 1.8;
 }
@@ -980,9 +996,9 @@ input {
 }
 
 .lesson-secondary {
-  color: var(--ink);
-  border-color: var(--line);
-  background: #fff;
+  color: #fff;
+  border-color: rgba(40, 240, 181, 0.44);
+  background: rgba(40, 240, 181, 0.1);
 }
 
 @media (max-width: 900px) {
@@ -1053,8 +1069,8 @@ input {
   .job-guide {
     padding: 18px;
     background:
-      linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(241, 247, 255, 0.92)),
-      linear-gradient(90deg, rgba(49, 230, 167, 0.12), rgba(255, 79, 123, 0.12));
+      linear-gradient(135deg, rgba(50, 100, 255, 0.18), rgba(255, 63, 143, 0.13)),
+      rgba(7, 17, 35, 0.9);
   }
 
   .job-controls {
@@ -1072,8 +1088,9 @@ input {
     min-height: 138px;
     border-radius: 8px;
     background:
-      linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(243, 248, 255, 0.94));
-    box-shadow: 0 14px 34px rgba(7, 17, 31, 0.14);
+      linear-gradient(145deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.045)),
+      rgba(6, 16, 35, 0.86);
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.3);
   }
 
   .resource-thumb {
@@ -1083,7 +1100,7 @@ input {
     align-self: stretch;
     min-height: 138px;
     padding: 6px;
-    background: linear-gradient(135deg, #dfefff, #f6f8ff 52%, #fff1f5);
+    background: linear-gradient(135deg, rgba(22, 219, 255, 0.18), rgba(255, 63, 143, 0.15));
   }
 
   .resource-thumb img {
@@ -1125,7 +1142,7 @@ input {
     min-height: 44px;
     padding: 8px 9px;
     font-size: 13px;
-    background: linear-gradient(135deg, var(--blue), #7c3aed);
+    background: linear-gradient(135deg, var(--pink), var(--orange));
   }
 
   .resource-meta span:first-child {
