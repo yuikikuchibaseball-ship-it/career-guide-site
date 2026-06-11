@@ -453,7 +453,7 @@ input {
 
 .profile-letter-card {
   min-height: auto;
-  padding: 28px 30px 26px;
+  padding: 24px 26px 22px;
   transform: rotate(-0.25deg);
 }
 
@@ -461,13 +461,22 @@ input {
   min-height: auto;
 }
 
+.profile-letter-card .message-letter-content h3 {
+  font-size: clamp(32px, 4vw, 46px);
+  line-height: 1.18;
+}
+
 .profile-letter-card .message-letter-content p {
-  font-size: clamp(21px, 2.35vw, 28px);
-  line-height: 1.72;
+  max-width: none;
+  color: #172238;
+  font-size: clamp(19px, 2vw, 24px);
+  line-height: 1.58;
+  letter-spacing: 0.02em;
 }
 
 .profile-letter-card .message-signature {
-  margin-top: 20px;
+  margin-top: 14px;
+  color: #172238;
 }
 
 .profile-section {
@@ -1181,23 +1190,26 @@ input {
   }
 
   .profile-letter-card {
-    padding: 24px 18px 22px;
+    padding: 22px 18px 20px;
   }
 
   .profile-letter-card .message-letter-content h3 {
-    margin-bottom: 16px;
-    font-size: clamp(30px, 8.2vw, 39px);
+    margin-bottom: 14px;
+    font-size: clamp(28px, 7vw, 34px);
+    line-height: 1.22;
   }
 
   .profile-letter-card .message-letter-content p {
-    font-size: clamp(18px, 5.1vw, 23px);
-    line-height: 1.68;
+    color: #172238;
+    font-size: clamp(15px, 4.1vw, 18px);
+    line-height: 1.6;
     letter-spacing: 0.02em;
   }
 
   .profile-letter-card .message-signature {
-    margin-top: 16px;
-    font-size: clamp(24px, 6.4vw, 32px);
+    margin-top: 12px;
+    color: #172238;
+    font-size: clamp(21px, 5.6vw, 27px);
   }
 
   .job-guide {
