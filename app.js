@@ -1,4 +1,3 @@
-const PASSWORD = "tensyoku1";
 window.__careerSiteLoaded = true;
 
 const base = "./assets/previews";
@@ -95,11 +94,6 @@ const interviews = [
   },
 ];
 
-const lockScreen = document.querySelector("#lockScreen");
-const siteApp = document.querySelector("#siteApp");
-const passwordForm = document.querySelector("#passwordForm");
-const passwordInput = document.querySelector("#passwordInput");
-const passwordError = document.querySelector("#passwordError");
 const jobGrid = document.querySelector("#jobGrid");
 const interviewGrid = document.querySelector("#interviewGrid");
 const filterChoices = document.querySelectorAll(".filter-choice");
@@ -108,45 +102,6 @@ const jobResultText = document.querySelector("#jobResultText");
 
 let activeFilter = "all";
 let searchTerm = "";
-
-function unlock() {
-  lockScreen.classList.add("is-hidden");
-  siteApp.classList.remove("is-hidden");
-}
-
-function getUnlockedState() {
-  try {
-    return (
-      window.localStorage?.getItem("careerSiteUnlocked") === "true" ||
-      window.sessionStorage?.getItem("careerSiteUnlocked") === "true"
-    );
-  } catch {
-    return false;
-  }
-}
-
-function saveUnlockedState() {
-  try {
-    window.localStorage?.setItem("careerSiteUnlocked", "true");
-    window.sessionStorage?.setItem("careerSiteUnlocked", "true");
-  } catch {
-    // file:// previews may block storage; the current page can still unlock.
-  }
-}
-
-if (getUnlockedState()) {
-  unlock();
-}
-
-passwordForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  if (passwordInput.value.trim() === PASSWORD) {
-    saveUnlockedState();
-    unlock();
-    return;
-  }
-  passwordError.textContent = "パスワードが違います。もう一度入力してください。";
-});
 
 function jobToResource([title, tag, slug, pdf, description, pages, customImage, customUrl, statusLabel]) {
   return {
